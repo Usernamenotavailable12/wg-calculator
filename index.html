@@ -54,9 +54,9 @@
             return;
         }
 
-        const wageredAmount = (initialBalance * 30 * progress) / 100;
-        const remainingAmount = (initialBalance * 30 * (100 - progress)) / 100;
-        const totalAmount = initialBalance * 30;
+        const wageredAmount = Math.ceil((initialBalance * 30 * progress) / 100);
+        const remainingAmount = Math.ceil((initialBalance * 30 * (100 - progress)) / 100);
+        const totalAmount = Math.ceil(initialBalance * 30);
 
         document.getElementById('wageredAmount').innerText = `Wagered Amount: ${wageredAmount}`;
         document.getElementById('remainingAmount').innerText = `Remaining Wager Amount: ${remainingAmount}`;
