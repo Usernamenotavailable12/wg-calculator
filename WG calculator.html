@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #calculator {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+    <title>Wager Calculator</title>
+</head>
+<body>
+
+<div id="calculator">
+    <label for="initialBalance">Initial Balance:</label>
+    <input type="number" id="initialBalance" placeholder="Enter initial balance">
+
+    <br>
+
+    <label for="progress">Wagering Progress (%):</label>
+    <input type="number" id="progress" placeholder="Enter wagering progress">
+
+    <br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <br>
+
+    <h3>Results:</h3>
+    <p id="wageredAmount">Wagered Amount: </p>
+    <p id="remainingAmount">Remaining Wager Amount: </p>
+    <p id="totalAmount">Total Wagering Amount: </p>
+</div>
+
+<script>
+    function calculate() {
+        const initialBalance = parseFloat(document.getElementById('initialBalance').value);
+        const progress = parseFloat(document.getElementById('progress').value);
+
+        if (isNaN(initialBalance) || isNaN(progress)) {
+            alert('Please enter valid numbers for initial balance and wagering progress.');
+            return;
+        }
+
+        const wageredAmount = (initialBalance * 30 * progress) / 100;
+        const remainingAmount = (initialBalance * 30 * (100 - progress)) / 100;
+        const totalAmount = initialBalance * 30;
+
+        document.getElementById('wageredAmount').innerText = `Wagered Amount: ${wageredAmount}`;
+        document.getElementById('remainingAmount').innerText = `Remaining Wager Amount: ${remainingAmount}`;
+        document.getElementById('totalAmount').innerText = `Total Wagering Amount: ${totalAmount}`;
+    }
+</script>
+
+</body>
+</html>
